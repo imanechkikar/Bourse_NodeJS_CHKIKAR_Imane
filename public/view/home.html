@@ -1,0 +1,70 @@
+<head>
+<meta charset="utf-8">
+</head>
+<div>
+<h1>home </h1>
+
+
+
+<div>
+
+                <div class="form-inline" >
+					<div class="form-group">
+					    <label for="codeSociete">Code Société</label>
+					    <input type="text" class="form-control" id="codeSociete"   ng-model="codeSociete" placeholder="Societe">
+					 </div>
+					  <button type="submit" class="btn btn-default" ng-click="chargerOrdres()">Rechercher</button>
+				</div>
+				
+				<div class="espace"></div>
+
+				<div  ng-if="listeOrdres.content!=null" >
+				
+				<div class="espace"></div>
+				<div>
+				    <table class="table table-striped">
+				    <thead>
+				         <tr>
+				         <th> idOrdre</th> <th> dateOrd</th> <th> nbAction </th> <th> prixAction </th><th>Actions</th>
+				        </tr> 
+				        <tr ng-repeat="ord in listeOrdres.content">
+				           <td>{{ord.idOrdre}}</td>
+				           <td>{{ord.dateOrd | date:'yyyy-MM-dd HH:mm:ss  '}}</td>
+				           <td>{{ord.nbAction }}</td>
+				           <td>{{ord.prixAction}}</td>
+				           <td>
+				           <a class="btn btn-success" href="#" ng-click="updateOrd(ord)" role="button">update</a>
+				            
+				           <a class="btn btn-danger" href="#" ng-click="deleteOrd(ord.idOrdre)" role="button">supprimer</a>
+				           </td>
+				        </tr>
+				    </thead>
+				     </table>
+				</div>
+				
+				<div ng-show="listeOrdres.totalPages>1"  >
+				    <ul class="container nav nav-pills">
+				    <li ng-repeat="p in pages track by $index" ng-class="{active:$pagecourante==$index}">
+				        <a ng-click="goTo($index)">{{$index+1}}</a>   
+				    </li>
+				    </ul>
+				    
+				</div>
+				
+				
+				
+				
+				
+				</div>
+				
+				<div class="espace"></div>
+</div>
+
+
+				
+
+
+
+</div>
+
+
